@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  private
+
+    layout Proc.new { |controller| controller.devise_controller? ? 'authentication' : 'application' }
+
 end

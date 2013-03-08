@@ -1,0 +1,30 @@
+<%= form_for([:admin, @novel]) do |f| %>
+
+  Titúlo<br />
+  <%= f.text_field :title, class: 'span12' %>
+
+  <br />
+
+  Descrição <br />
+  <%= f.text_area :description, :rows => "3" %>
+
+  <br />
+
+    <% @categories.each do |category| %>
+
+
+          <%= label_tag do %>
+              <%= radio_button_tag "novel[novel_category_ids][]", category.id, @novel.novel_categories.include?(category) %>
+              <%= category.title %> <br />
+
+          <% end %>
+
+    <% end %>
+
+<%= f.submit %>
+
+<% end %>
+
+<%= link_to "Voltar", :back %>
+
+

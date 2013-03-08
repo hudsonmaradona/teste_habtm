@@ -1,4 +1,40 @@
-<h3>Home</h3>
+<h4>Home</h4>
+<br />
 <% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+  <p>User <%= user.id %>: <%=link_to user.name, user %></p>
+<% end %>
+
+<h4>Lista de Novelas</h4>
+<br />
+<% @novels.each do |novel| %>
+
+    <p>Novel <%= novel.id %>: <%= link_to novel.title, novel %></p>
+<% end %>
+
+<h4>Lista de Categorias |</h4>
+
+<% @categories.each do |category| %>
+  <%= link_to category.title, category %><br />
+<% end %>
+
+<h4>Lista de Categorias</h4>
+
+<% @novels.each do |novel| %>
+  <ul>
+    <% novel.novel_categories.each do |category| %>
+        <li><%= category.title %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<% @novels.each do |novel| %>
+
+      <ul>
+        <% novel.novel_categories.each do |category| %>
+            <li><%= link_to category.title, category_path(category) %></a></li>
+        <% end %>
+      </ul>
+
+
 <% end %>

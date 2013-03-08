@@ -1,0 +1,33 @@
+<% content_for :breadcrumb do %>
+    <li class="active">Categoria de Novelas</li>
+<% end %>
+
+<table class="table zebra-striped table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Título</th>
+    <th colspan='3'>Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.title %></td>
+        <td class="actions"><i class="icon-hand-up"></i><%= link_to 'Visualizar', [:admin,category] %></td>
+        <td class="actions"><i class="icon-edit"></i><%= link_to 'Editar', [:edit,:admin,category] %></td>
+        <td class="actions"><i class="icon-remove-sign"></i><%= link_to 'Excluir', [:admin,category], method: 'delete', confirm: 'Confirmar exclusão?' %></td>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<div id="clear">
+
+</div>
+
+<div class="well actions">
+  <%= link_to 'Nova Categoria', new_admin_novel_category_path, :class => "btn btn-success" %>
+</div>

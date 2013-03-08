@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308122411) do
+ActiveRecord::Schema.define(:version => 20130308141610) do
+
+  create_table "novel_categories", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "novel_categories_novels", :id => false, :force => true do |t|
+    t.integer "novel_category_id", :null => false
+    t.integer "novel_id",          :null => false
+  end
+
+  add_index "novel_categories_novels", ["novel_category_id", "novel_id"], :name => "index_novel_categories_novels_on_novel_category_id_and_novel_id"
+
+  create_table "novels", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

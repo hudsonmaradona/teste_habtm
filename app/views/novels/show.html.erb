@@ -1,0 +1,22 @@
+<h2>Visualizando Novela</h2> <br /><br />
+
+<strong>Título :</strong>
+<%= @novel.title %>
+
+<br />
+<br />
+
+<strong>Descrição :</strong>
+<%= @novel.description %>
+
+<br />
+<br />
+
+<% @novel.novel_categories.each do |category| %>
+    <ul>
+      <li><%= category.title %></li>
+    </ul>
+
+<% end %>
+
+<%= link_to "Voltar", :back %>

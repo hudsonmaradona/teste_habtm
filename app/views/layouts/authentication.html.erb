@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Ilove - Painel Administrativo" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ilove - Painel Administrativo" %>">
+
+  <%#= favicon_link_tag 'authentication/favicon.png', rel: 'shortcut icon', type: 'image/png' %>
+
+  <%#= stylesheet_link_tag "authentication/normalize", "authentication/main", "alerts" %>
+  <%#= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+  <%#= yield(:head) %>
+
+</head>
+
+<body id="<%= controller_name %> <%= action_name %>">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="content-limit-admin">
+
+  <div class="limit-admin">
+
+    <% flash.each do |name, msg| %>
+        <div class="message-<%= name == :notice ? "success" : "warning" %>">
+          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+        </div>
+    <% end %>
+
+    <figure>
+      <%= image_tag("authentication/logo-admin-site-ilove.png", alt: "logo painel administrativo ilove") %>
+    </figure>
+
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+        <%= f.email_field :email, placeholder:'USUÁRIO' %>
+
+        <%= f.password_field :password, placeholder: 'SENHA' %>
+
+        <%= f.check_box :remember_me %>
+        <span>Mantenha-me conectado</span>
+
+        <%= f.submit "Acessar" %>
+
+    <% end %>
+
+
+  </div><!-- fim div limit-admin -->
+</div><!-- fim div content-limit-admin -->
+
+</body>
+</html>

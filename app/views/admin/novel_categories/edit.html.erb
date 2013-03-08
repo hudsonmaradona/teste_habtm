@@ -1,0 +1,8 @@
+<% content_for :breadcrumb do %>
+    <li><%= link_to t('activerecord.models.novel_category.many'), admin_novels_path %> <span class="divider">/</span></li>
+    <li class="active"><%= translate_action_model('edit', 'novel_category') %></li>
+<% end %>
+
+<%= nav_bar_admin('Editar Jogo - ' + @category.title) %>
+
+<%= render 'form' %>
